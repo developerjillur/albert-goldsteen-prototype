@@ -711,6 +711,70 @@ h1, h2, h3, h4 { hyphens: manual; -webkit-hyphens: manual; }
 .zijkolom .quote__initialen { background: var(--papier); }
 @media (max-width: 960px) { .fotoband--2 .f2 { grid-column: 1 / -1; } }
 
+/* The wide opening runs on under the header, so the photo shows no edge below the header. */
+.hero--breed { margin-top: calc(-1 * (var(--header-h) + 1px)); }
+.hero--breed .hero__grid { padding-top: calc(var(--header-h) + 1px); min-height: clamp(680px, 100svh, 1040px); }
+.hero--breed .hero__foto img { object-position: 100% 0%; }
+.site-header[data-top="foto"]:not(.is-scrolled) { background: transparent; }
+@media (max-width: 1100px) {
+  .hero--breed .hero__grid { min-height: 0; }
+  .hero--breed .hero__foto img { object-position: 100% 16%; }
+}
+.endorsements__meer summary { padding-block: 12px; }
+/* ---------- mobile QA, 20 Oct 2026 ---------- */
+/* The opening slides in without opening a gap under the header. */
+@media (prefers-reduced-motion: no-preference) {
+  .main-ingang > section:first-child { animation: none; }
+  .main-ingang > section:first-child > .wrap { animation: settle .55s var(--ease) both; }
+}
+/* Headings never hyphenate; on narrow phones the largest size shrinks so the longest Dutch words fit. */
+h1, h2, h3, h4, .footer__regel, .slot .h-xl, .namen { hyphens: manual; -webkit-hyphens: manual; }
+@media (max-width: 380px) { .h-xl { font-size: min(var(--t-xl), 11.6vw); } }
+/* A label on two lines balances instead of leaving one word behind. */
+.eyebrow { text-wrap: balance; }
+/* Header: the button never wraps; on the smallest phones the wordmark and the gaps shrink. */
+.nav > .knop { white-space: nowrap; }
+@media (max-width: 360px) {
+  .site-header .wrap { gap: 10px; }
+  .merk svg { width: 112px; }
+  .nav { gap: 10px; }
+  .nav > .knop { padding: 8px 10px; font-size: 0.875rem; }
+}
+/* Touch targets of at least 44 px on phones and tablets. */
+@media (max-width: 960px) {
+  .site-header .merk { padding-block: 8px; margin-block: -8px; }
+  .nav > .knop { min-height: 44px; }
+  a.tekst-link { display: inline-block; padding-block: 12px; margin-block: -12px; }
+  .acties .tekst-link { padding-block: 12px; margin-block: 0; }
+  .eyebrow-link { display: inline-block; padding-block: 14px; margin-block: -14px; }
+  .kopieer button { padding-block: 12px; }
+  .herken__meer { padding-block: 9px; }
+  .footer__kol ul { gap: 0; }
+  .footer__kol li > a { display: inline-block; padding-block: 12px; }
+}
+/* Faces stay in the frame when a portrait is cropped to a landscape box. */
+@media (max-width: 960px) { .paginakop__foto img { object-position: 50% 22%; } }
+/* MORE: a two-by-two grid on phones instead of four tall rows. */
+@media (max-width: 640px) {
+  .more { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .more__item, .more__item + .more__item { padding: 18px 12px 18px 0; border-left: 0; border-bottom: 1px solid var(--grijs); }
+  .more__item:nth-child(even) { padding-left: 14px; border-left: 1px solid var(--grijs); }
+  .more__letter { font-size: 3.25rem; }
+}
+/* The footer leaves room for the Beheer button on phones. */
+@media (max-width: 640px) { .site-footer { padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); } }
+/* An ink closing band and the ink footer get a fine rule between them. */
+main:has(> section.inkt:last-child) + .site-footer { border-top: 1px solid var(--grijs); }
+/* The wordmark link and the small footer link also reach 44 px. */
+@media (max-width: 960px) {
+  .site-header .merk { padding-block: 17px; margin-block: -17px; }
+  .site-footer p > a { display: inline-block; padding-block: 13px; margin-block: -13px; }
+}
+/* Tablets: the wide opening photo runs edge to edge at a calmer height. */
+@media (min-width: 641px) and (max-width: 1100px) {
+  .hero--breed .hero__foto { aspect-ratio: auto; height: min(68svh, 720px); }
+}
+
 /* Beheer panel: a calm CMS side panel in the brand palette. */
 .bh-open {
   position: fixed; z-index: 70;
@@ -834,6 +898,11 @@ html.bh-actief [data-blok]:hover { outline: 3px solid var(--geel); outline-offse
 @media (max-width: 640px) {
   .bh-paneel { border-left: 0; }
 }
+/* Phones: a small Beheer button that covers less of the page. */
+@media (max-width: 640px) {
+  .bh-open { min-height: 44px; padding: 8px 14px; gap: 8px; font-size: 0.9375rem; right: calc(12px + env(safe-area-inset-right, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
+  .bh-open__demo { display: none; }
+}
 
 </style>
 </head>
@@ -863,7 +932,7 @@ html.bh-actief [data-blok]:hover { outline: 3px solid var(--geel); outline-offse
 <div class="footer__onder"><p>© 2026 Albert Goldsteen</p><p><a href="#privacy">Privacyverklaring</a></p><p>Portretten: Marijke Boeve Fotografie</p></div>
 </div></footer>
 <script>
-var DIMS = {"bank-blazer":[933,1400],"bank-landschap":[2000,1333],"boek-3d":[849,1100],"boek-omslag":[846,1200],"boeklancering":[1080,1440],"close-grijs":[933,1400],"gesprek-buiten-2":[1143,1600],"gesprek-buiten":[1800,1013],"gesprek-tafel-2":[1800,1200],"gesprek-tafel":[1800,1200],"handen-blazer":[1600,1067],"handen":[1600,1067],"hero-100662-roze":[1200,1800],"hero-100903-roze":[1200,1800],"hero-200434-roze-vol":[1200,1800],"hero-200434-roze":[1200,1800],"hero-200459-roze":[1200,1800],"hero-breed-200434":[2880,1620],"hero-breed-200459":[2880,1620],"hero-spreekt":[1133,1700],"laptop":[933,1400],"portret-blazer":[1000,1500],"portret-staand":[1000,1500],"portret-zwart":[933,1400],"presenteert-studio":[2000,1333],"reflectie":[933,1400],"scan-werkblad":[733,1100],"staand-zwart":[1000,1500],"stoel-gele-schoenen":[1133,1700],"stoel-zwart-landschap":[2000,1333],"t-anne-floor":[360,360],"t-bert-wienen":[360,360],"t-roel-beentjes":[360,360],"t-sezgin-cihangir":[360,360],"t-sven":[360,360],"tafel-glimlach":[933,1400],"tafel-lacht":[933,1400],"tafel-landschap":[2000,1333],"verdieping-cover":[733,734],"zaal-checkin":[2000,1125],"zaal-flipover":[1143,1600],"zaal-lacht-uitsnede":[920,1600],"zaal-lacht":[1143,1600],"zaal-notities":[1600,1600],"zaal-profiel":[1143,1600],"zaal-publiek":[1080,1080],"zaal-sessie-breed":[2000,1125]};
+var DIMS = {"bank-blazer":[933,1400],"bank-landschap":[2000,1333],"boek-3d":[849,1100],"boek-omslag":[846,1200],"boeklancering":[1080,1440],"close-grijs":[933,1400],"gesprek-buiten-2":[1143,1600],"gesprek-buiten":[1800,1013],"gesprek-tafel-2":[1800,1200],"gesprek-tafel":[1800,1200],"handen-blazer":[1600,1067],"handen":[1600,1067],"hero-100662-roze":[1200,1800],"hero-100903-roze":[1200,1800],"hero-200434-roze-vol":[1200,1800],"hero-200434-roze":[1200,1800],"hero-200459-roze":[1200,1800],"hero-breed-200434":[2880,1620],"hero-breed-200459":[2880,1620],"hero-spreekt":[1133,1700],"laptop":[1240,1860],"portret-blazer":[1000,1500],"portret-staand":[1240,1860],"portret-zwart":[1240,1860],"presenteert-studio":[2000,1333],"reflectie":[1240,1860],"scan-werkblad":[733,1100],"staand-zwart":[1240,1860],"stoel-gele-schoenen":[1240,1860],"stoel-zwart-landschap":[2000,1333],"t-anne-floor":[360,360],"t-bert-wienen":[360,360],"t-roel-beentjes":[360,360],"t-sezgin-cihangir":[360,360],"t-sven":[360,360],"tafel-glimlach":[933,1400],"tafel-lacht":[933,1400],"tafel-landschap":[2000,1333],"verdieping-cover":[733,734],"zaal-checkin":[2000,1125],"zaal-flipover":[1143,1600],"zaal-lacht-uitsnede":[920,1600],"zaal-lacht":[1143,1600],"zaal-notities":[1600,1600],"zaal-profiel":[1143,1600],"zaal-publiek":[1080,1080],"zaal-sessie-breed":[2000,1125]};
 var LOGO_VB = {"letters": "0 0 151.08 112.11", "woordmerk": "0 0 523.58 52.34"};
 /* Content of record for the prototype. Every fact and quote comes from Albert's own words (brandbook 4.0, LinkedIn,
    his current site) or a verified source; see research/research/ledger.json. Missing data is shown as "volgt". */
@@ -993,7 +1062,7 @@ const FORMS = {
 const PAGES = [
   { slug: 'home', titel: 'Home', menu: false, docTitel: 'Albert Goldsteen | Spreker over werkdruk, keuzes en leiderschap', blokken: [
     { type: 'hero', data: {
-      eyebrow: 'Interactieve lezing · 60 of 90 minuten',
+      eyebrow: 'Interactieve lezing · 60 of 90 minuten',
       titel: 'Druk zijn is geen strategie.',
       lead: 'Je kunt de hele dag druk zijn en toch de keuzes laten liggen die ertoe doen. In deze lezing kiest iedereen één stap om binnen 48 uur te proberen.',
       knop: { label: 'Boek Albert', href: '#boek-albert' },
@@ -2135,6 +2204,7 @@ const SITE_DEFAULT = {
       else if (eerste.data && eerste.data.achtergrond) top = eerste.data.achtergrond;
       else if (eerste.type === 'paginakop') top = 'roze';
     }
+    if (main.querySelector('.hero--breed')) top = 'foto';
     header.setAttribute('data-top', top);
     renderNav();
     koppelKopknop(p);
@@ -2181,6 +2251,12 @@ const SITE_DEFAULT = {
     tmp.innerHTML = renderBlok(b, p);
     var nieuw = tmp.firstElementChild;
     if (nieuw) el.replaceWith(nieuw);
+    if (nieuw && nieuw === main.firstElementChild) {
+      var kt = header.getAttribute('data-top');
+      if (nieuw.classList.contains('hero--breed')) header.setAttribute('data-top', 'foto');
+      else if (kt === 'foto') header.setAttribute('data-top', 'roze');
+      koppelKopknop(p);
+    }
     var extra = tmp.firstElementChild;
     while (extra) { nieuw.after(extra); extra = tmp.firstElementChild; }
     document.dispatchEvent(new CustomEvent('ag:render', { detail: { slug: p.slug, blok: id } }));
@@ -3100,7 +3176,7 @@ const SITE_DEFAULT = {
     knopOpen.type = 'button';
     knopOpen.className = 'bh-open';
     knopOpen.setAttribute('data-bh-open', '');
-    knopOpen.innerHTML = '<span class="bh-open__stip" aria-hidden="true"></span>Beheer (demo)';
+    knopOpen.innerHTML = '<span class="bh-open__stip" aria-hidden="true"></span>Beheer<span class="bh-open__demo"> (demo)</span>';
     document.body.appendChild(knopOpen);
   }
   function open() {
