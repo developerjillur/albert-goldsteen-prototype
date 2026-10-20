@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Albert Goldsteen website prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --roze: #D8A7B1; --geel: #F2D14A; --inkt: #191B18; --papier: #F6F3EB; --grijs: #61665D; }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--papier); color: var(--inkt); font: 400 1.125rem/1.55 Inter, system-ui, sans-serif; }
+  main { max-width: 1040px; margin: 0 auto; padding: clamp(40px, 8vw, 96px) max(16px, 5vw); display: flex; flex-direction: column; gap: clamp(28px, 4vw, 48px); }
+  h1 { font-size: clamp(2.25rem, 1.4rem + 3.6vw, 4rem); line-height: 1.02; letter-spacing: -0.04em; font-weight: 700; max-width: 14ch; }
+  .streep { display: block; width: 64px; height: 6px; background: var(--geel); }
+  .intro { max-width: 56ch; }
+  .versies { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 28px); }
+  .versie { background: var(--roze); padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; gap: 16px; }
+  .versie h2 { font-size: 1.75rem; letter-spacing: -0.03em; line-height: 1.1; }
+  .versie p { flex: 1; }
+  .knop { align-self: flex-start; display: inline-flex; align-items: center; min-height: 48px; padding: 12px 22px; background: var(--inkt); color: var(--papier); font-weight: 600; text-decoration: none; border: 2px solid var(--inkt); }
+  .knop:hover { background: transparent; color: var(--inkt); }
+  .knop:focus-visible { outline: 3px solid var(--inkt); outline-offset: 3px; }
+  .noot { font-size: 0.9375rem; color: var(--grijs); max-width: 60ch; }
+  @media (max-width: 720px) { .versies { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Albert Goldsteen website prototype</h1>
+  <span class="streep" aria-hidden="true"></span>
+  <p class="intro">Two versions of the new site for albertgoldsteen.nl. Each one is the complete site: every page, the booking form and the editing demo.</p>
+  <div class="versies">
+    <section class="versie" aria-labelledby="v2"><h2 id="v2">Version 2</h2><p>The opening with a framed portrait next to the title.</p><a class="knop" href="v2/">Open version 2</a></section>
+    <section class="versie" aria-labelledby="v3"><h2 id="v3">Version 3</h2><p>The opening on a pink studio wall, with the proof in the first screen. Made after a full design review.</p><a class="knop" href="v3/">Open version 3</a></section>
+  </div>
+  <p class="noot">This is a prototype, not the live website. What you change in Beheer is saved only in your own browser.</p>
+</main>
+</body>
+</html>
