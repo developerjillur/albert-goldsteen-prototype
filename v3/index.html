@@ -613,7 +613,7 @@ dl.bewijs, dl.woorden, dl.specs { margin: 0; }
 .hero--breed .hero__grid { grid-template-areas: "tekst ." "bewijs ."; }
 .hero--breed .hero__foto { position: absolute; inset: 0; margin: 0; z-index: 0; }
 .hero--breed .hero__foto img { object-position: 100% 30%; }
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
   .hero__grid, .hero--breed .hero__grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: "tekst" "foto" "bewijs"; min-height: 0; }
   .hero__tekst { padding-block: clamp(20px, 4vw, 40px) 28px; }
   .hero__foto, .hero--breed .hero__foto { position: relative; inset: auto; z-index: 0; aspect-ratio: 4 / 5; max-height: min(72svh, 760px); min-height: 0;
@@ -716,7 +716,7 @@ h1, h2, h3, h4 { hyphens: manual; -webkit-hyphens: manual; }
 .hero--breed .hero__grid { padding-top: calc(var(--header-h) + 1px); min-height: clamp(680px, 100svh, 1040px); }
 .hero--breed .hero__foto img { object-position: 100% 0%; }
 .site-header[data-top="foto"]:not(.is-scrolled) { background: transparent; }
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
   .hero--breed .hero__grid { min-height: 0; }
   .hero--breed .hero__foto img { object-position: 100% 16%; }
 }
@@ -771,8 +771,12 @@ main:has(> section.inkt:last-child) + .site-footer { border-top: 1px solid var(-
   .site-footer p > a { display: inline-block; padding-block: 13px; margin-block: -13px; }
 }
 /* Tablets: the wide opening photo runs edge to edge at a calmer height. */
-@media (min-width: 641px) and (max-width: 1100px) {
+@media (min-width: 641px) and (max-width: 1000px) {
   .hero--breed .hero__foto { aspect-ratio: auto; height: min(68svh, 720px); }
+}
+/* Small laptops and landscape tablets: a narrower text column keeps the copy clear of Albert. */
+@media (min-width: 1001px) and (max-width: 1279px) {
+  .hero--breed .hero__grid { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); }
 }
 
 /* Beheer panel: a calm CMS side panel in the brand palette. */
